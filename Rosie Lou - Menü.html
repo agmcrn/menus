@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Rosie Lou - Menü</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #2c2418;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            font-family: 'Georgia', 'Times New Roman', Times, serif;
+        }
+
+        /* Menü kartı */
+        .menu {
+            max-width: 1000px;
+            width: 100%;
+            background: #fef7e8;
+            background-image: radial-gradient(circle at 10% 20%, rgba(0,0,0,0.02) 2%, transparent 2.5%);
+            background-size: 28px 28px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            padding: 50px 45px 60px 45px;
+            border-radius: 4px;
+            position: relative;
+            border: 1px solid #e2d5bd;
+        }
+
+        /* dekoratif çizgi */
+        .menu::before {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            right: 30px;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, #c7a55b, #c7a55b 8px, transparent 8px, transparent 16px);
+        }
+
+        .menu::after {
+            content: "";
+            position: absolute;
+            bottom: 20px;
+            left: 30px;
+            right: 30px;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, #c7a55b, #c7a55b 8px, transparent 8px, transparent 16px);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 58px;
+            letter-spacing: 4px;
+            font-weight: 600;
+            font-family: 'Times New Roman', Times, serif;
+            color: #2c1e12;
+            border-bottom: 2px solid #e0cdac;
+            display: inline-block;
+            width: auto;
+            margin: 0 auto 20px;
+            padding-bottom: 10px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .sub {
+            font-style: italic;
+            color: #7a5a3a;
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-top: 8px;
+        }
+
+        /* bölüm başlıkları */
+        .section-title {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #3d2a1a;
+            border-bottom: 1.5px solid #d4bd8c;
+            padding-bottom: 5px;
+            margin: 35px 0 20px 0;
+            text-transform: uppercase;
+        }
+
+        .section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        /* grid yapısı - orijinal yerleşim */
+        .menu-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .menu-item {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px dotted #e2cfaa;
+            padding-bottom: 6px;
+            margin-bottom: 4px;
+            font-size: 15.5px;
+            line-height: 1.35;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        .item-name {
+            font-weight: 600;
+            color: #2b2b1a;
+            flex: 2;
+            min-width: 200px;
+            font-size: 16px;
+            letter-spacing: 0.3px;
+        }
+
+        .item-price {
+            font-weight: 600;
+            color: #8b6946;
+            margin-left: 20px;
+            white-space: nowrap;
+            font-size: 15px;
+        }
+
+        .item-desc {
+            width: 100%;
+            font-size: 13px;
+            color: #6b5a44;
+            margin-top: 4px;
+            margin-bottom: 6px;
+            font-style: normal;
+            padding-right: 10px;
+            font-family: 'Georgia', serif;
+        }
+
+        .small-note {
+            font-size: 11px;
+            color: #a0835a;
+            font-style: italic;
+            display: inline-block;
+            margin-left: 8px;
+        }
+
+        .share-title {
+            margin-top: 15px;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px;
+            color: #b45f2b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .note-warning {
+            font-size: 12px;
+            color: #a52a1a;
+            background: #fff0e0;
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 20px;
+            margin-left: 10px;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            height: 1px;
+            background: #e2cdab;
+        }
+
+        /* ÇİZGİLİ stil (domuz ürünleri) */
+        s {
+            text-decoration: line-through;
+            text-decoration-thickness: 2px;
+            text-decoration-color: #ab2b1e;
+            color: #7e5e3c;
+        }
+
+        /* fiyatlar da çizili olabilir ama aynı kalem */
+        s .item-price, .item-name s {
+            text-decoration: line-through;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 45px;
+            font-size: 11px;
+            color: #b2976e;
+            border-top: 1px solid #e7d7bc;
+            padding-top: 20px;
+            font-style: italic;
+        }
+
+        @media (max-width: 650px) {
+            .menu {
+                padding: 30px 20px;
+            }
+            .item-name {
+                font-size: 14px;
+                min-width: 160px;
+            }
+            .item-desc {
+                font-size: 11.5px;
+            }
+            h1 {
+                font-size: 42px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="menu">
+    <div class="header">
+        <h1>ROSIE LOU</h1>
+        <div class="sub">BİSTRONOMI & LEZZET</div>
+    </div>
+
+    <!-- BAŞLANGIÇLAR -->
+    <div class="section-title">Başlangıçlar</div>
+    <div class="menu-grid">
+
+        <div class="menu-item"><div class="item-name">ROSIE LOU USULÜ MAYONEZLİ YUMURTA</div><div class="item-price">.5</div><div class="item-desc">Serbest gezen tavuk yumurtası, Espelette biberli ev yapımı acılı mayo, soğan</div></div>
+        <div class="menu-item"><div class="item-name"><s>ÖRDEK YÜREKLERİ</s></div><div class="item-price"><s>.7,5</s></div><div class="item-desc"><s>Gers bölgesinden, maydanoz-sarımsaklı, tatlı ve tuzlu soya sosu ile cilalı</s></div></div>
+        <div class="menu-item"><div class="item-name">BURGUNDY USULÜ SALYANGOZLAR</div><div class="item-price">.12</div><div class="item-desc">Sarımmsaklı maydanoz tereyağında gratenlenmiş salyangozlar</div></div>
+        <div class="menu-item"><div class="item-name"><s>TXISTORRA (Bask sosisi)</s></div><div class="item-price"><s>.6</s></div><div class="item-desc"><s>Hafif acılı Bask sosisi, San Sebastián kasabımızdan direkt</s></div></div>
+        <div class="menu-item"><div class="item-name">OSSAU IRATY PEYNİRİ</div><div class="item-price">.10</div><div class="item-desc">Bask peynirlerinin yıldızı, Eliszarea çiftliğinden direkt</div></div>
+        <div class="menu-item"><div class="item-name"><s>GÜNEY BATI ÖRDEK RILLETTE</s></div><div class="item-price"><s>.7</s></div><div class="item-desc"><s>Montauser evinden kremsi rillette</s></div></div>
+        <div class="menu-item"><div class="item-name">ATUNLU PINTXOS</div><div class="item-price">.8</div><div class="item-desc">Ortiz evi ton balıklı piquillos biberi, otlu taze peynir, taggiasche zeytin, limon suyu</div></div>
+        <div class="menu-item"><div class="item-name">BÜYÜK PATATES OMELETİ</div><div class="item-price">.11</div><div class="item-desc">İspanyol usulü patatesli omlet, karamelize soğan, San Sebastian txistorra, aioli sos (vejetaryen versiyon - 100€)</div></div>
+        <div class="menu-item"><div class="item-name">ILBARRITZ USULÜ KARİDES</div><div class="item-price">.10</div><div class="item-desc">Espelette biberli ve sarımsaklı kremsi sosta pişirilmiş</div></div>
+        <div class="menu-item"><div class="item-name"><s>BAYONNE JAMBONU</s></div><div class="item-price"><s>.9</s></div><div class="item-desc"><s>12 ay dinlendirilmiş, anında kesilmiş, Montauser evinden</s></div></div>
+        <div class="menu-item"><div class="item-name">MEVSİMLİK KUŞKONMAZ</div><div class="item-price">.12</div><div class="item-desc">Salsa verde ile servis: tarhun, maydanoz, nane, kornişon, kapari, zeytinyağı, elma sirkesi, badem</div></div>
+        <div class="menu-item"><div class="item-name">SALMOREJO</div><div class="item-price">.8</div><div class="item-desc">İspanya'dan: sığır kalbi domatesli gazpacho</div></div>
+        <div class="menu-item"><div class="item-name"><s>JAMBONLU CROQUETAS</s></div><div class="item-price"><s>.8</s></div><div class="item-desc"><s>Serrano jambonlu kroketler, acılı mayo dip sos</s></div></div>
+        <div class="menu-item"><div class="item-name"><s>ÖRDEK CİĞERİ</s></div><div class="item-price"><s>.16</s></div><div class="item-desc"><s>Landes IGP, mısırla beslenmiş, soğanlı çutney eşliğinde</s></div></div>
+        <div class="menu-item"><div class="item-name">ÇOCUK MENÜSÜ</div><div class="item-price">.12</div><div class="item-desc">Grenadin veya naneli su, 18 aylık comté peynirli jambonlu makarna, çikolatalı kurabiye</div></div>
+    </div>
+
+    <!-- ANA YEMEKLER -->
+    <div class="section-title">Ana Yemekler</div>
+    <div class="menu-grid">
+        <div class="menu-item"><div class="item-name"><s>TRÜFLÜ PEYNİRLİ MAKARNA JAMBON</s></div><div class="item-price"><s>.19</s></div><div class="item-desc"><s>Fransız makarna, butik jambon, 18 aylık comté, sotelé Istavrit mantarı, yaz trüflü krema</s></div></div>
+        <div class="menu-item"><div class="item-name"><s>JEANTOU USULÜ SOSİS PÜRE</s></div><div class="item-price"><s>.13</s></div><div class="item-desc"><s>El işi Bask sosisi, ev yapımı patates püresi, et suyu</s></div></div>
+        <div class="menu-item"><div class="item-name">GÜNÜN VEJETARYEN YEMEĞİ</div><div class="item-price">.16</div><div class="item-desc">Detaylar için garsonlarımıza sorunuz</div></div>
+        <div class="menu-item"><div class="item-name">KUZUKULAĞI İLE SOMON</div><div class="item-price">.18</div><div class="item-desc">Balotin somon, tereyağlı ıspanak, basmati pirinç, kuzukulağı kreması</div></div>
+        <div class="menu-item"><div class="item-name">KASAP PARÇASI</div><div class="item-price">.18</div><div class="item-desc">Sırt bavette, çift pişirme patates kızartması, mavi peynir veya karabiber sos</div></div>
+        <div class="menu-item"><div class="item-name"><s>TRÜFLÜ CROQUE MADAME</s></div><div class="item-price"><s>.15</s></div><div class="item-desc"><s>Thierry Breton ekmeği, yaz trüflü mornay sos, 18 aylık comté, kemikli butik jambon, serbest yumurta, salata çift pişirme patates kızartması</s></div></div>
+        <div class="menu-item"><div class="item-name">BANGKOK SALATASI (Saint Jean)</div><div class="item-price">.16</div><div class="item-desc">Çin lahanası, havuç, kabak, Taggiasche zeytin, piquillos, beyaz peynir, Tay usulü marine dilimli dana bavette, Espelette biber</div></div>
+        <div class="menu-item"><div class="item-name"><s>MÜKEMMEL ÖRDEK GÖĞSÜ</s></div><div class="item-price"><s>.22</s></div><div class="item-desc"><s>Landes mısırla beslenmiş ördek, zencefilli havuç püresi, közlenmiş havuç, bal-biberiye sos</s></div></div>
+        <div class="menu-item"><div class="item-name"><s>DOMUZ FİLETOSU</s></div><div class="item-price"><s>.21</s></div><div class="item-desc"><s>Bayonne jambon kaplama, ev yapımı pesto, bezelye, Istavrit mantarı, köz havuç, biberiyeli et suyu</s></div></div>
+        <div class="menu-item"><div class="item-name">BASKA USULÜ TAVUK</div><div class="item-price">.18</div><div class="item-desc">Bask bölgesine özgü, Fransız sarı tavuk but, piperade ile confit, pilav ile servis</div></div>
+        <div class="menu-item"><div class="item-name">GÜNÜN BALIĞI</div><div class="item-price">…</div><div class="item-desc">Detaylar için garsonlara sorunuz - Gelgit fiyatı uygulanır</div></div>
+    </div>
+
+    <!-- PAYLAŞIMLIK -->
+    <div class="share-title">✨ paylaşımlık ✨</div>
+    <div class="menu-grid">
+        <div class="menu-item"><div class="item-name">CHAROLAIS DANA KABURGA</div><div class="item-price">90€/kg</div><div class="item-desc">Paylaşımlık güzel parça, çift pişirme patates kızartması</div></div>
+        <div class="menu-item"><div class="item-name"><s>BAL VE BİBERİYELİ ÖRDEK GÖĞSÜ</s></div><div class="item-price"><s>.48</s></div><div class="item-desc"><s>Güneybatı ördeği, ördek yağında kızartılmış yumrulu patates, taze otlar, bal-biberiye sos</s></div></div>
+    </div>
+
+    <div class="section-title">Günün Önerileri</div>
+    <div class="menu-grid"><div class="item-name" style="font-style:italic; border-bottom:none;">Detaylar için bizimkilere sorunuz →</div></div>
+
+    <!-- TATLILAR -->
+    <div class="section-title">Tatlılar</div>
+    <div class="menu-grid">
+        <div class="menu-item"><div class="item-name">PARIS-BREST</div><div class="item-price">.8</div><div class="item-desc">Ev yapımı choux, kakaolu kraken, pralin, fındıklı ganaj monteli</div></div>
+        <div class="menu-item"><div class="item-name">SÜTLAÇ</div><div class="item-price">.7</div><div class="item-desc">Süper kremsi, vanilyalı, karamelize çıtır pirinç tepesi</div></div>
+        <div class="menu-item"><div class="item-name">İKİ KİŞİLİK ISLAK ÇİKOLATA KEK</div><div class="item-price">.16</div><div class="item-desc">Vanilyalı krema anglaise ile. (15 dk bekleme süresi)</div></div>
+        <div class="menu-item"><div class="item-name">BASKA USULÜ CHEESECAKE</div><div class="item-price">.8</div><div class="item-desc">Bademli gevrek, tuz çiçeği, mevsim meyveli kondiman</div></div>
+        <div class="menu-item"><div class="item-name">MEVSİM MEYVELİ TART</div><div class="item-price">.8</div><div class="item-desc">Rositos'lara sorunuz</div></div>
+        <div class="menu-item"><div class="item-name">KAHVE TATLISI</div><div class="item-price">.5</div><div class="item-desc">Sadece öğle yemeğinde</div></div>
+    </div>
+
+    <footer>
+        Rosie Lou - Şefin kalbinden tabağınıza. <br>
+        Domuz eti içeren ürünlerin üzeri çizilmiştir.
+    </footer>
+</div>
+</body>
+</html>
